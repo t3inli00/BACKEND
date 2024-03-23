@@ -8,6 +8,7 @@ const query =(sql,values =[]) => {
             const result = await pool.query(sql,values)
             resolve(result)
         }catch(error){
+            console.log(error)
             reject(error.message)
         }
     })
@@ -20,7 +21,7 @@ const openDb = () => {
         database: process.env.DB_NAME,
         password:process.env.DB_PASSWORD,
         port: process.env.DB_PORT,
-        port: process.env.SSL
+        ssl: process.env.SSL
     })
     return pool
 }
